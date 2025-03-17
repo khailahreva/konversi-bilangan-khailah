@@ -1,0 +1,169 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Konversi Bilangan</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            min-height: 100vh;
+            background-color: pink;
+            margin: 0;
+            padding: 20px;
+        }
+
+        .container, .identity-box {
+            background-color: #ffffff;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+            text-align: center;
+            width: 100%;
+            max-width: 400px; /* Batasi agar tidak terlalu lebar */
+            box-sizing: border-box;
+        }
+
+        h1 {
+            color: #333;
+            margin-bottom: 15px;
+        }
+
+        label {
+            display: block;
+            margin-top: 10px;
+            font-weight: bold;
+            text-align: left;
+        }
+
+        input[type="text"], select {
+            width: 100%;
+            padding: 10px;
+            margin-top: 5px;
+            margin-bottom: 15px;
+            border: 2px solid #ccc;
+            border-radius: 6px;
+            font-size: 16px;
+            box-sizing: border-box; /* Supaya tidak melewati batas */
+        }
+
+        button {
+            background-color: hotpink;
+            color: #ffffff;
+            border: none;
+            padding: 12px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-size: 18px;
+            width: 100%;
+            font-weight: bold;
+            transition: 0.3s;
+            margin-top: 5px;
+        }
+
+        button:hover {
+            background-color: palevioletred;
+        }
+
+        .result {
+            margin-top: 15px;
+            font-size: 18px;
+            font-weight: bold;
+            color: #333;
+            padding: 10px;
+            background: #f9f9f9;
+            border-radius: 6px;
+        }
+
+        .identity-box {
+            margin-top: 20px;
+            text-align: center;
+        }
+
+        .identity-box h3 {
+            margin-bottom: 5px;
+            color: black;
+            text-align: center;
+        }
+
+        .identity-box p {
+            margin: 5px 0;
+            font-size: 16px;
+            font-weight: bold;
+        }
+    </style>
+</head>
+<body>
+
+    <div class="identity-box">
+        <h3>Identitas</h3>
+        <p>Nama: <span id="nama">Khailah Reva Azzarah</span></p>
+        <p>Kelas: <span id="alamat">XII RPL 1</span></p>
+        <p>No.Absen: <span id="alamat">22</span></p>
+    </div>
+<br>
+<br>
+    <div class="container">
+        <h1><u>Konversi Bilangan</u></h1>
+
+        <label for="number">Masukkan Bilangan:</label>
+        <input type="text" id="number" placeholder="Masukkan angka..." />
+
+        <label for="conversionType">Pilih Konversi:</label>
+        <select id="conversionType">
+            <option value="desimal-ke-biner">Desimal ke Biner</option>
+            <option value="desimal-ke-oktal">Desimal ke Oktal</option>
+            <option value="biner-ke-desimal">Biner ke Desimal</option>
+            <option value="oktal-ke-desimal">Oktal ke Desimal</option>
+            <option value="oktal-ke-biner">Oktal ke Biner</option>
+            <option value="biner-ke-oktal">Biner ke Oktal</option>
+        </select>
+
+        <button onclick="convert()">Konversi</button>
+
+        <div class="result" id="result"></div>
+    </div>
+
+    <script>
+        function convert() {
+            let number = document.getElementById("number").value;
+            let conversionType = document.getElementById("conversionType").value;
+            let result = "";
+
+            if (number === "") {
+                result = "Masukkan angka terlebih dahulu!";
+            } else {
+                switch (conversionType) {
+                    case "desimal-ke-biner":
+                        result = `Biner: ${parseInt(number, 10).toString(2)}`;
+                        break;
+                    case "desimal-ke-oktal":
+                        result = `Oktal: ${parseInt(number, 10).toString(8)}`;
+                        break;
+                    case "biner-ke-desimal":
+                        result = `Desimal: ${parseInt(number, 2)}`;
+                        break;
+                    case "oktal-ke-desimal":
+                        result = `Desimal: ${parseInt(number, 8)}`;
+                        break;
+                    case "oktal-ke-biner":
+                        result = `Biner: ${parseInt(number, 8).toString(2)}`;
+                        break;
+                    case "biner-ke-oktal":
+                        result = `Oktal: ${parseInt(number, 2).toString(8)}`;
+                        break;
+                    default:
+                        result = "Pilih jenis konversi!";
+                }
+            }
+
+            document.getElementById("result").innerText = result;
+        }
+    </script>
+
+</body>
+</html>
